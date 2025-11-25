@@ -309,7 +309,8 @@ struct APIConfiguration {
 
 **Build Settings**:
 - Link Config.xcconfig in Xcode project settings
-- Use `$(OPENAI_API_KEY)` in Info.plist
+- Use `INFOPLIST_KEY_OPENAI_API_KEY = "$(OPENAI_API_KEY)"` in build settings
+- Info.plist is generated automatically (`GENERATE_INFOPLIST_FILE = YES`)
 
 ---
 

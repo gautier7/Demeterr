@@ -99,20 +99,26 @@ Demeterr/
 ---
 
 ### 0.3 Info.plist Configuration
-**Goal**: Add required permissions and configurations
+**Goal**: Add required permissions and configurations via build settings
 
 **Checklist**:
-- [ ] Add microphone permission:
-  - Key: `NSMicrophoneUsageDescription`
+- [ ] Configure Xcode project to generate Info.plist automatically (`GENERATE_INFOPLIST_FILE = YES`)
+- [ ] Add microphone permission via build settings:
+  - Key: `INFOPLIST_KEY_NSMicrophoneUsageDescription`
   - Value: "Demeterr needs microphone access to record your food entries via voice"
-- [ ] Add API key reference (from step 0.1)
-- [ ] Set minimum iOS version to 17.0
-- [ ] Verify Info.plist contains all required keys
-- [ ] Verify no warnings in Xcode about missing permissions
+- [ ] Add API key reference via build settings:
+  - Key: `INFOPLIST_KEY_OPENAI_API_KEY`
+  - Value: `$(OPENAI_API_KEY)` (references Config.xcconfig)
+- [ ] Set minimum iOS version via build settings:
+  - `IPHONEOS_DEPLOYMENT_TARGET = 17.0`
+- [ ] Verify build settings contain all required keys
+- [ ] Verify project builds successfully with permissions
 
 **Success Criteria**:
-- ✅ Microphone permission configured
-- ✅ API key accessible via Info.plist
+- ✅ Microphone permission configured via build settings
+- ✅ API key accessible via generated Info.plist
+- ✅ Minimum iOS version set to 17.0
+- ✅ No physical Info.plist file needed (generated automatically)
 
 ---
 
