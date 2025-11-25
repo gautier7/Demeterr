@@ -12,7 +12,9 @@ import SwiftData
 struct DemeterrApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            // Models will be added here in future phases
+            DailyEntry.self,
+            CustomFood.self,
+            DailyGoals.self
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

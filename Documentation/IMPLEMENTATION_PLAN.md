@@ -238,15 +238,15 @@ Define all SwiftData models and establish data persistence layer.
 **Goal**: Register all models with SwiftData
 
 **Checklist**:
-- [ ] Update [`Demeterr/App/DemeterrApp.swift`](Demeterr/App/DemeterrApp.swift)
-- [ ] Register all models in Schema:
+- [x] Update [`Demeterr/App/DemeterrApp.swift`](Demeterr/App/DemeterrApp.swift)
+- [x] Register all models in Schema:
   - `DailyEntry.self`
   - `CustomFood.self`
   - `DailyGoals.self`
-- [ ] Verify app builds successfully
-- [ ] Verify no SwiftData errors in console
-- [ ] Verify models registered correctly
-- [ ] Test data persistence works
+- [x] Verify app builds successfully
+- [x] Verify no SwiftData errors in console
+- [x] Verify models registered correctly
+- [x] Test data persistence works
 
 **Success Criteria**:
 - ✅ All models registered with SwiftData
