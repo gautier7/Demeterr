@@ -184,18 +184,18 @@ Define all SwiftData models and establish data persistence layer.
 **Goal**: Store user's nutrition targets
 
 **Checklist**:
-- [ ] Create [`Demeterr/Models/DailyGoals.swift`](Demeterr/Models/DailyGoals.swift)
-- [ ] Define model with `@Model` macro including:
+- [x] Create [`Demeterr/Models/DailyGoals.swift`](Demeterr/Models/DailyGoals.swift)
+- [x] Define model with `@Model` macro including:
   - `id: UUID`
   - `calorieTarget: Int` (default: 2000)
   - `proteinTarget: Double` (default: 150)
   - `fatTarget: Double` (default: 65)
   - `carbsTarget: Double` (default: 250)
   - `lastUpdated: Date`
-- [ ] Implement initializer with default values
-- [ ] Test model creation
-- [ ] Verify defaults set correctly
-- [ ] Verify can update and persist goals
+- [x] Implement initializer with default values
+- [x] Test model creation
+- [x] Verify defaults set correctly
+- [x] Verify can update and persist goals
 
 **Success Criteria**:
 - ✅ Model compiles without errors
@@ -208,12 +208,12 @@ Define all SwiftData models and establish data persistence layer.
 **Goal**: Define structures for OpenAI API responses
 
 **Checklist**:
-- [ ] Create [`Demeterr/Models/APIModels.swift`](Demeterr/Models/APIModels.swift)
-- [ ] Define `TranscriptionResponse` struct with `text: String`
-- [ ] Define `NutritionAnalysisResponse` struct with:
+- [x] Create [`Demeterr/Models/APIModels.swift`](Demeterr/Models/APIModels.swift)
+- [x] Define `TranscriptionResponse` struct with `text: String`
+- [x] Define `NutritionAnalysisResponse` struct with:
   - `foods: [FoodItem]`
   - `total: NutritionTotal`
-- [ ] Define `FoodItem` struct with:
+- [x] Define `FoodItem` struct with:
   - `name: String`
   - `quantity: Double`
   - `unit: String`
@@ -221,11 +221,11 @@ Define all SwiftData models and establish data persistence layer.
   - `protein: Double`
   - `fat: Double`
   - `carbs: Double`
-- [ ] Define `NutritionTotal` struct with calorie and macro totals
-- [ ] Define `APIError` enum with error cases
-- [ ] Verify all models conform to Codable
-- [ ] Test JSON decoding works correctly
-- [ ] Verify error types defined
+- [x] Define `NutritionTotal` struct with calorie and macro totals
+- [x] Define `APIError` enum with error cases
+- [x] Verify all models conform to Codable
+- [x] Test JSON decoding works correctly
+- [x] Verify error types defined
 
 **Success Criteria**:
 - ✅ All models conform to Codable
