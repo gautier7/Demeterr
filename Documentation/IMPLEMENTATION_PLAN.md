@@ -159,8 +159,8 @@ Define all SwiftData models and establish data persistence layer.
 **Goal**: Store user-defined foods with nutrition per 100g
 
 **Checklist**:
-- [ ] Create [`Demeterr/Models/CustomFood.swift`](Demeterr/Models/CustomFood.swift)
-- [ ] Define model with `@Model` macro including:
+- [x] Create [`Demeterr/Models/CustomFood.swift`](Demeterr/Models/CustomFood.swift)
+- [x] Define model with `@Model` macro including:
   - `id: UUID`
   - `name: String`
   - `caloriesPer100g: Int`
@@ -168,10 +168,10 @@ Define all SwiftData models and establish data persistence layer.
   - `fatPer100g: Double`
   - `carbsPer100g: Double`
   - `createdDate: Date`
-- [ ] Implement initializer
-- [ ] Add helper method `nutritionFor(grams: Double)` to calculate nutrition for specific quantity
-- [ ] Test calculation method returns correct values
-- [ ] Verify can create and store custom foods
+- [x] Implement initializer
+- [x] Add helper method `nutritionFor(grams: Double)` to calculate nutrition for specific quantity
+- [x] Test calculation method returns correct values
+- [x] Verify can create and store custom foods
 
 **Success Criteria**:
 - ✅ Model compiles without errors
