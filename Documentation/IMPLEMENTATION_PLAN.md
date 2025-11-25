@@ -32,12 +32,12 @@ Set up the project structure, API configuration, and development environment.
 **Goal**: Securely store and access OpenAI API key
 
 **Checklist**:
-- [ ] Create `Config.xcconfig` file in project root (add to `.gitignore`)
-- [ ] Add line: `OPENAI_API_KEY = your_actual_api_key_here`
-- [ ] Create `Config.example.xcconfig` template for version control
-- [ ] Link `Config.xcconfig` in Xcode project settings
-- [ ] Add `OPENAI_API_KEY` to Info.plist using `$(OPENAI_API_KEY)`
-- [ ] Create [`Demeterr/Utilities/APIConfiguration.swift`](Demeterr/Utilities/APIConfiguration.swift) to load key at runtime
+- [x] Create `Config.xcconfig` file in project root (add to `.gitignore`)
+- [x] Add line: `OPENAI_API_KEY = your_actual_api_key_here`
+- [x] Create `Config.example.xcconfig` template for version control
+- [x] Link `Config.xcconfig` in Xcode project settings
+- [x] Add `OPENAI_API_KEY` to Info.plist using `$(OPENAI_API_KEY)`
+- [x] Create [`Demeterr/Utilities/APIConfiguration.swift`](Demeterr/Utilities/APIConfiguration.swift) to load key at runtime
 
 **Files to Create**:
 - `Config.xcconfig` (not in git)
@@ -61,7 +61,7 @@ print(APIConfiguration.openAIKey) // Should print key without crashing
 **Goal**: Create organized folder structure for maintainability
 
 **Checklist**:
-- [ ] Create folder structure in Xcode:
+- [x] Create folder structure in Xcode:
 ```
 Demeterr/
 ├── App/
@@ -87,10 +87,10 @@ Demeterr/
 └── Resources/
     └── Assets.xcassets (existing)
 ```
-- [ ] Move [`DemeterrApp.swift`](Demeterr/DemeterrApp.swift) to `App/` folder
-- [ ] Delete template files: [`ContentView.swift`](Demeterr/ContentView.swift), [`Item.swift`](Demeterr/Item.swift)
-- [ ] Verify project builds successfully after reorganization
-- [ ] Verify all folders visible in Xcode navigator
+- [x] Move [`DemeterrApp.swift`](Demeterr/DemeterrApp.swift) to `App/` folder
+- [x] Delete template files: [`ContentView.swift`](Demeterr/ContentView.swift), [`Item.swift`](Demeterr/Item.swift)
+- [x] Verify project builds successfully after reorganization
+- [x] Verify all folders visible in Xcode navigator
 
 **Success Criteria**:
 - ✅ Clean folder structure established
@@ -102,17 +102,17 @@ Demeterr/
 **Goal**: Add required permissions and configurations via build settings
 
 **Checklist**:
-- [ ] Configure Xcode project to generate Info.plist automatically (`GENERATE_INFOPLIST_FILE = YES`)
-- [ ] Add microphone permission via build settings:
+- [x] Configure Xcode project to generate Info.plist automatically (`GENERATE_INFOPLIST_FILE = YES`)
+- [x] Add microphone permission via build settings:
   - Key: `INFOPLIST_KEY_NSMicrophoneUsageDescription`
   - Value: "Demeterr needs microphone access to record your food entries via voice"
-- [ ] Add API key reference via build settings:
+- [x] Add API key reference via build settings:
   - Key: `INFOPLIST_KEY_OPENAI_API_KEY`
   - Value: `$(OPENAI_API_KEY)` (references Config.xcconfig)
-- [ ] Set minimum iOS version via build settings:
+- [x] Set minimum iOS version via build settings:
   - `IPHONEOS_DEPLOYMENT_TARGET = 17.0`
-- [ ] Verify build settings contain all required keys
-- [ ] Verify project builds successfully with permissions
+- [x] Verify build settings contain all required keys
+- [x] Verify project builds successfully with permissions
 
 **Success Criteria**:
 - ✅ Microphone permission configured via build settings
@@ -131,8 +131,8 @@ Define all SwiftData models and establish data persistence layer.
 **Goal**: Store individual food entries with nutritional data
 
 **Checklist**:
-- [ ] Create [`Demeterr/Models/DailyEntry.swift`](Demeterr/Models/DailyEntry.swift)
-- [ ] Define model with `@Model` macro including:
+- [x] Create [`Demeterr/Models/DailyEntry.swift`](Demeterr/Models/DailyEntry.swift)
+- [x] Define model with `@Model` macro including:
   - `id: UUID`
   - `foodName: String`
   - `quantity: Double`
@@ -144,9 +144,9 @@ Define all SwiftData models and establish data persistence layer.
   - `timestamp: Date`
   - `date: Date` (for grouping by day)
   - `source: String` ("custom" or "estimated")
-- [ ] Implement initializer with default values
-- [ ] Test model creation and property access
-- [ ] Verify date automatically set to start of day
+- [x] Implement initializer with default values
+- [x] Test model creation and property access
+- [x] Verify date automatically set to start of day
 
 **Success Criteria**:
 - ✅ Model compiles without errors
@@ -264,8 +264,8 @@ Implement voice recording functionality with visual feedback.
 **Goal**: Handle audio recording with AVFoundation
 
 **Checklist**:
-- [ ] Create [`Demeterr/Services/AudioRecorder.swift`](Demeterr/Services/AudioRecorder.swift)
-- [ ] Implement `@Observable` class with:
+- [x] Create [`Demeterr/Services/AudioRecorder.swift`](Demeterr/Services/AudioRecorder.swift)
+- [x] Implement `@Observable` class with:
   - `isRecording: Bool` property
   - `audioLevel: Float` property for visualization
   - `setupAudioSession()` method
@@ -273,10 +273,10 @@ Implement voice recording functionality with visual feedback.
   - `stopRecording()` method returning URL
   - `calculateLevel(from:)` method for waveform visualization
   - `requestPermission()` async method
-- [ ] Set up AVAudioSession with record category
-- [ ] Create temporary M4A file for recording
-- [ ] Install tap on audio input node to capture audio
-- [ ] Calculate audio level for visualization
+- [x] Set up AVAudioSession with record category
+- [x] Create temporary M4A file for recording
+- [x] Install tap on audio input node to capture audio
+- [x] Calculate audio level for visualization
 - [ ] Test recording starts/stops correctly
 - [ ] Test audio file created at temporary location
 - [ ] Test audio level updates during recording
