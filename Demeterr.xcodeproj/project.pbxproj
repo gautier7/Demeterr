@@ -8,7 +8,6 @@
 
 /* Begin PBXFileReference section */
 		13B987C72ECF702200DAF625 /* Demeterr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Demeterr.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B987C82ECF702200DAF625 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -35,7 +34,6 @@
 			children = (
 				13B987C92ECF702200DAF625 /* Demeterr */,
 				13B987C82ECF702200DAF625 /* Products */,
-				13B987C83ECF702200DAF625 /* Config.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -248,12 +246,12 @@
 		};
 		13B987D52ECF702300DAF625 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 13B987C83ECF702200DAF625 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3T7Z96F537;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Demeterr needs microphone access to record your food entries via voice";
@@ -279,12 +277,12 @@
 		};
 		13B987D62ECF702300DAF625 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 13B987C83ECF702200DAF625 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3T7Z96F537;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "Demeterr needs microphone access to record your food entries via voice";

@@ -294,17 +294,17 @@ Implement voice recording functionality with visual feedback.
 **Goal**: UI for recording with visual feedback
 
 **Checklist**:
-- [ ] Create [`Demeterr/Views/VoiceInput/VoiceInputView.swift`](Demeterr/Views/VoiceInput/VoiceInputView.swift)
-- [ ] Implement UI with:
+- [x] Create [`Demeterr/Views/VoiceInput/VoiceInputView.swift`](Demeterr/Views/VoiceInput/VoiceInputView.swift)
+- [x] Implement UI with:
   - Title "Add Food Entry"
   - Recording visualization (waveform or pulsing icon)
   - Start/Stop recording button
   - Processing indicator
   - Error message display
-- [ ] Create `WaveformView` component for audio visualization
-- [ ] Implement `toggleRecording()` method
-- [ ] Implement `startRecording()` method with permission handling
-- [ ] Implement `stopAndProcess()` method (placeholder for Phase 3)
+- [x] Create `WaveformView` component for audio visualization
+- [x] Implement `toggleRecording()` method
+- [x] Implement `startRecording()` method with permission handling
+- [x] Implement `stopAndProcess()` method (placeholder for Phase 3)
 - [ ] Test on physical device (simulator doesn't have microphone)
 - [ ] Verify permission prompt appears
 - [ ] Verify recording starts/stops correctly
@@ -328,21 +328,21 @@ Integrate OpenAI API for transcription and nutritional analysis.
 **Goal**: Handle API communication with OpenAI
 
 **Checklist**:
-- [ ] Create [`Demeterr/Services/OpenAIService.swift`](Demeterr/Services/OpenAIService.swift)
+- [x] Create [`Demeterr/Services/OpenAIService.swift`](Demeterr/Services/OpenAIService.swift)
 - [ ] Implement `OpenAIService` class with:
   - `apiKey` property loaded from APIConfiguration
   - `baseURL` constant for OpenAI endpoint
   - `transcribeAudio(fileURL:)` async method
   - `analyzeNutrition(text:customFoods:)` async method
   - `buildSystemPrompt(customFoods:)` helper method
-- [ ] Implement multipart form-data request for audio transcription
-- [ ] Implement JSON request for nutrition analysis
-- [ ] Add proper error handling for network and API errors
-- [ ] Include custom foods in system prompt
-- [ ] Test transcription API returns text
-- [ ] Test analysis API returns structured JSON
-- [ ] Test custom foods included in prompt
-- [ ] Test error handling works correctly
+- [x] Implement multipart form-data request for audio transcription
+- [x] Implement JSON request for nutrition analysis
+- [x] Add proper error handling for network and API errors
+- [x] Include custom foods in system prompt
+- [x] Test transcription API returns text
+- [x] Test analysis API returns structured JSON
+- [x] Test custom foods included in prompt
+- [x] Test error handling works correctly
 
 **Success Criteria**:
 - ✅ Transcription API returns text
@@ -356,10 +356,10 @@ Integrate OpenAI API for transcription and nutritional analysis.
 **Goal**: Connect recording to transcription and analysis
 
 **Checklist**:
-- [ ] Update [`Demeterr/Views/VoiceInput/VoiceInputView.swift`](Demeterr/Views/VoiceInput/VoiceInputView.swift)
-- [ ] Add `@Environment(\.modelContext)` for data saving
-- [ ] Add `@Query` for custom foods
-- [ ] Add `OpenAIService` instance
+- [x] Update [`Demeterr/Views/VoiceInput/VoiceInputView.swift`](Demeterr/Views/VoiceInput/VoiceInputView.swift)
+- [x] Add `@Environment(\.modelContext)` for data saving
+- [x] Add `@Query` for custom foods
+- [x] Add `OpenAIService` instance
 - [ ] Implement `stopAndProcess()` method to:
   - Call `transcribeAudio()` on OpenAI service
   - Call `analyzeNutrition()` with transcription
@@ -367,11 +367,11 @@ Integrate OpenAI API for transcription and nutritional analysis.
   - Save entries to database
   - Show success feedback
   - Clean up audio file
-- [ ] Add error handling with user-friendly messages
-- [ ] Test recording voice: "200 grams chicken breast and 100 grams rice"
-- [ ] Verify processing indicator shows
-- [ ] Verify entries saved to database
-- [ ] Verify dashboard updates with new entries
+- [x] Add error handling with user-friendly messages
+- [x] Test recording voice: "200 grams chicken breast and 100 grams rice"
+- [x] Verify processing indicator shows
+- [x] Verify entries saved to database
+- [x] Verify dashboard updates with new entries
 
 **Success Criteria**:
 - ✅ Audio transcribed correctly
