@@ -29,11 +29,9 @@ struct VoiceInputView: View {
                 WaveformView(audioLevel: audioRecorder.audioLevel)
                     .frame(height: 200)
             } else {
-                Image(systemName: "mic.circle.fill")
-                    .resizable()
-                    .frame(width: 120, height: 120)
-                    .foregroundColor(.blue)
-                    .opacity(isProcessing ? 0.5 : 1.0)
+                // Empty space when not recording to maintain layout
+                Spacer()
+                    .frame(height: 200)
             }
 
             // Recording Button
@@ -142,36 +140,64 @@ struct VoiceInputView: View {
         Task {
             do {
                 // Step 1: Transcribe audio
+                print("🎤 Starting transcription...")
                 let transcribedText = try await openAIService.transcribeAudio(fileURL: audioFileURL)
+                print("✅ Transcribed text: \(transcribedText)")
+                
+                // Check if transcription is empty or too short
+                if transcribedText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    errorMessage = "Could not understand the audio. Please try again and speak clearly."
+                    showError = true
+                    isProcessing = false
+                    try? FileManager.default.removeItem(at: audioFileURL)
+                    return
+                }
                 
                 // Step 2: Analyze nutrition
+                print("🔍 Analyzing nutrition...")
                 let analysisResponse = try await openAIService.analyzeNutrition(
                     text: transcribedText,
                     customFoods: customFoods
                 )
+                print("✅ Analysis response: \(analysisResponse)")
+                print("📊 Found \(analysisResponse.foods.count) food items")
+                
+                // Check if any food items were detected
+                if analysisResponse.foods.isEmpty {
+                    errorMessage = "No food items detected. I heard: \"\(transcribedText)\"\n\nPlease try again and describe what you ate (e.g., \"200 grams of chicken breast and a cup of rice\")."
+                    showError = true
+                    isProcessing = false
+                    try? FileManager.default.removeItem(at: audioFileURL)
+                    return
+                }
                 
                 // Step 3: Create DailyEntry objects from analysis results
+                print("💾 Creating entries...")
                 for foodItem in analysisResponse.foods {
                     let entry = DailyEntry(
                         foodName: foodItem.name,
                         quantity: foodItem.quantity,
                         unit: foodItem.unit,
-                        calories: foodItem.calories,
+                        calories: foodItem.caloriesInt,
                         protein: foodItem.protein,
                         fat: foodItem.fat,
                         carbs: foodItem.carbs,
                         source: "estimated"
                     )
+                    print("➕ Inserting entry: \(foodItem.name) - \(foodItem.caloriesInt) cal")
                     modelContext.insert(entry)
                 }
                 
                 // Step 4: Save to database
+                print("💾 Saving to database...")
                 try modelContext.save()
+                print("✅ Database save successful")
                 
                 // Step 5: Show success feedback
                 let foodCount = analysisResponse.foods.count
-                successMessage = "✓ Added \(foodCount) food item\(foodCount > 1 ? "s" : "") (\(analysisResponse.total.calories) cal)"
+                successMessage = "✓ Added \(foodCount) food item\(foodCount > 1 ? "s" : "") (\(analysisResponse.total.caloriesInt) cal)"
                 showSuccess = true
+                print("✅ Success message shown: \(successMessage ?? "")")
                 
                 // Clear success message after 2 seconds
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
@@ -182,6 +208,8 @@ struct VoiceInputView: View {
                 try? FileManager.default.removeItem(at: audioFileURL)
                 
             } catch {
+                print("❌ Error: \(error)")
+                print("❌ Error description: \(error.localizedDescription)")
                 errorMessage = "Failed to process audio: \(error.localizedDescription)"
                 showError = true
                 

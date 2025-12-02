@@ -16,15 +16,11 @@ struct APIConfiguration {
             return key
         }
 
-        // Fallback: try to read from Config.xcconfig file directly
-        // This is useful during development when the config file might not be processed into Info.plist
-        if let configPath = Bundle.main.path(forResource: "Config", ofType: "xcconfig"),
-           let content = try? String(contentsOfFile: configPath),
-           let keyLine = content.components(separatedBy: "\n").first(where: { $0.hasPrefix("OPENAI_API_KEY") }),
-           let key = keyLine.components(separatedBy: "=").last?.trimmingCharacters(in: .whitespaces) {
+        // Fallback: check environment variable
+        if let key = ProcessInfo.processInfo.environment["OPENAI_API_KEY"], !key.isEmpty {
             return key
         }
 
-        fatalError("OpenAI API key not found in configuration. Please check Config.xcconfig setup.")
+        fatalError("OpenAI API key not found. Please ensure OPENAI_API_KEY is set in your build configuration via Config.xcconfig file.")
     }()
 }

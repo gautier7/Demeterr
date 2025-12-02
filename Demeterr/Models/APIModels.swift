@@ -22,17 +22,27 @@ struct FoodItem: Codable {
     let name: String
     let quantity: Double
     let unit: String
-    let calories: Int
+    let calories: Double
     let protein: Double
     let fat: Double
     let carbs: Double
+    
+    /// Calories as integer for display and storage
+    var caloriesInt: Int {
+        Int(calories.rounded())
+    }
 }
 
 struct NutritionTotal: Codable {
-    let calories: Int
+    let calories: Double
     let protein: Double
     let fat: Double
     let carbs: Double
+    
+    /// Calories as integer for display and storage
+    var caloriesInt: Int {
+        Int(calories.rounded())
+    }
 }
 
 enum APIError: Error {

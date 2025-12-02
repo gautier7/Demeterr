@@ -391,8 +391,8 @@ Build main dashboard with progress visualization.
 **Goal**: Circular progress indicator for calories
 
 **Checklist**:
-- [ ] Create [`Demeterr/Views/Dashboard/CalorieProgressRing.swift`](Demeterr/Views/Dashboard/CalorieProgressRing.swift)
-- [ ] Implement custom ring with:
+- [x] Create [`Demeterr/Views/Dashboard/CalorieProgressRing.swift`](Demeterr/Views/Dashboard/CalorieProgressRing.swift)
+- [x] Implement custom ring with:
   - `current: Int` parameter
   - `goal: Int` parameter
   - `progress` computed property
@@ -400,13 +400,13 @@ Build main dashboard with progress visualization.
   - Background circle
   - Progress circle with animation
   - Center text showing current/goal and "calories"
-- [ ] Test ring displays correctly
-- [ ] Test colors change based on progress:
+- [x] Test ring displays correctly
+- [x] Test colors change based on progress:
   - Green: 0-90%
   - Yellow: 90-100%
   - Red: >100%
-- [ ] Test animation smooth
-- [ ] Test text centered properly
+- [x] Test animation smooth
+- [x] Test text centered properly
 
 **Success Criteria**:
 - ✅ Ring displays correctly
@@ -420,8 +420,8 @@ Build main dashboard with progress visualization.
 **Goal**: Horizontal progress bars for protein/fat/carbs
 
 **Checklist**:
-- [ ] Create [`Demeterr/Views/Dashboard/MacroProgressBar.swift`](Demeterr/Views/Dashboard/MacroProgressBar.swift)
-- [ ] Implement bar with:
+- [x] Create [`Demeterr/Views/Dashboard/MacroProgressBar.swift`](Demeterr/Views/Dashboard/MacroProgressBar.swift)
+- [x] Implement bar with:
   - `name: String` parameter
   - `current: Double` parameter
   - `goal: Double` parameter
@@ -431,10 +431,10 @@ Build main dashboard with progress visualization.
   - `progressColor` computed property
   - Header with name and current/goal values
   - Animated progress bar
-- [ ] Test bar displays correctly
-- [ ] Test colors change based on progress
-- [ ] Test values formatted properly
-- [ ] Test animation smooth
+- [x] Test bar displays correctly
+- [x] Test colors change based on progress
+- [x] Test values formatted properly
+- [x] Test animation smooth
 
 **Success Criteria**:
 - ✅ Bar displays correctly
@@ -448,8 +448,8 @@ Build main dashboard with progress visualization.
 **Goal**: Main screen showing daily progress and entries
 
 **Checklist**:
-- [ ] Create [`Demeterr/Views/Dashboard/DashboardView.swift`](Demeterr/Views/Dashboard/DashboardView.swift)
-- [ ] Implement dashboard with:
+- [x] Create [`Demeterr/Views/Dashboard/DashboardView.swift`](Demeterr/Views/Dashboard/DashboardView.swift)
+- [x] Implement dashboard with:
   - `@Query` for goals and entries
   - `dailyGoals` computed property
   - `todayEntries` computed property (filtered by date)
@@ -459,13 +459,13 @@ Build main dashboard with progress visualization.
   - Today's entries list
   - Empty state message
   - Settings navigation button
-- [ ] Create `EntryRowView` component for displaying individual entries
-- [ ] Test dashboard displays all components
-- [ ] Test progress updates in real-time
-- [ ] Test entries sorted by time
-- [ ] Test empty state shows correctly
-- [ ] Test with entries over goal
-- [ ] Test navigation works
+- [x] Create `EntryRowView` component for displaying individual entries
+- [x] Test dashboard displays all components
+- [x] Test progress updates in real-time
+- [x] Test entries sorted by time
+- [x] Test empty state shows correctly
+- [x] Test with entries over goal
+- [x] Test navigation works
 
 **Success Criteria**:
 - ✅ Dashboard displays all components

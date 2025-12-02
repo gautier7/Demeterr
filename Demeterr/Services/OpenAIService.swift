@@ -34,15 +34,15 @@ class OpenAIService {
         
         var body = Data()
         
-        // Add model parameter
+        // Add model parameter - using gpt-4o-transcribe for better accuracy
         body.append("--\(boundary)\r\n".data(using: .utf8)!)
         body.append("Content-Disposition: form-data; name=\"model\"\r\n\r\n".data(using: .utf8)!)
-        body.append("whisper-1\r\n".data(using: .utf8)!)
+        body.append("gpt-4o-transcribe\r\n".data(using: .utf8)!)
         
-        // Add audio file
+        // Add audio file - using WAV format for better compatibility
         body.append("--\(boundary)\r\n".data(using: .utf8)!)
-        body.append("Content-Disposition: form-data; name=\"file\"; filename=\"audio.m4a\"\r\n".data(using: .utf8)!)
-        body.append("Content-Type: audio/mp4\r\n\r\n".data(using: .utf8)!)
+        body.append("Content-Disposition: form-data; name=\"file\"; filename=\"audio.wav\"\r\n".data(using: .utf8)!)
+        body.append("Content-Type: audio/wav\r\n\r\n".data(using: .utf8)!)
         
         let audioData = try Data(contentsOf: fileURL)
         body.append(audioData)
@@ -123,13 +123,41 @@ class OpenAIService {
             throw APIError.invalidResponse
         }
         
+        print("📝 Raw API response content: \(content)")
+        
         // Parse the JSON content
         guard let jsonData = content.data(using: .utf8) else {
+            print("❌ Failed to convert content to data")
             throw APIError.decodingError(NSError(domain: "JSON", code: -1))
         }
         
-        let analysisResponse = try JSONDecoder().decode(NutritionAnalysisResponse.self, from: jsonData)
-        return analysisResponse
+        do {
+            let analysisResponse = try JSONDecoder().decode(NutritionAnalysisResponse.self, from: jsonData)
+            print("✅ Parsed analysis response: \(analysisResponse)")
+            print("✅ Foods count: \(analysisResponse.foods.count)")
+            for (index, food) in analysisResponse.foods.enumerated() {
+                print("   Food \(index + 1): \(food.name) - \(food.calories) cal")
+            }
+            return analysisResponse
+        } catch {
+            print("❌ JSON Decoding Error: \(error)")
+            print("❌ Error details: \(error.localizedDescription)")
+            if let decodingError = error as? DecodingError {
+                switch decodingError {
+                case .keyNotFound(let key, let context):
+                    print("❌ Key not found: \(key.stringValue) in \(context.codingPath)")
+                case .typeMismatch(let type, let context):
+                    print("❌ Type mismatch: expected \(type) at \(context.codingPath)")
+                case .valueNotFound(let type, let context):
+                    print("❌ Value not found: \(type) at \(context.codingPath)")
+                case .dataCorrupted(let context):
+                    print("❌ Data corrupted at \(context.codingPath): \(context.debugDescription)")
+                @unknown default:
+                    print("❌ Unknown decoding error")
+                }
+            }
+            throw APIError.decodingError(error)
+        }
     }
     
     // MARK: - Helper Methods
